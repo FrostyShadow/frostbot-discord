@@ -1,0 +1,41 @@
+{
+  "name": "frostbot-discord",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node .",
+    "build": "tsup src/index.ts --minify",
+    "fromat": "prettier --write \"**/*.{json,ts}\"",
+    "lint": "eslint . --ext ts --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FrostyShadow/frostbot-discord.git"
+  },
+  "author": "Frosty Shadow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FrostyShadow/frostbot-discord/issues"
+  },
+  "homepage": "https://github.com/FrostyShadow/frostbot-discord#readme",
+  "description": "",
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.11",
+    "@typescript-eslint/eslint-plugin": "^7.16.1",
+    "@typescript-eslint/parser": "^7.16.1",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^17.9.0",
+    "eslint-plugin-promise": "^6.5.1",
+    "prettier": "^3.3.3",
+    "tsup": "^8.2.1",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.3"
+  }
+}
