@@ -1,4 +1,4 @@
-import { Client } from "discord.js";
+import { ActivityType, Client } from "discord.js";
 import { config } from "./config";
 import { guildCommands } from "./commands/guild-commands";
 import { deployGuildCommands, deployGlobalCommands } from "./deploy-commands";
@@ -29,10 +29,15 @@ client.once("ready", () => {
   }, 500);
 });
 
-client.on("guildAvailable", () => {
+client.on("guildAvailable", (guild) => {
+  logger.debug(`Guild ID: ${guild.id}, Guild Name: ${guild.name}`);
   setTimeout(async () => {
     await deployGuildCommands({ guildId: config.TEST_GUILD_ID }, logger);
   }, 500);
+
+  client.user?.setActivity("Your degenerate ass", {
+    type: ActivityType.Watching,
+  });
 });
 
 client.on("interactionCreate", async (interaction) => {
