@@ -10,6 +10,17 @@ on:
     branches: [ "main" ]
 
 jobs:
+  semver:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Action For Semantic Release
+      uses: cycjimmy/semantic-release-action@v4.1.0
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: npx semantic-release --dry-run
+  
   build:
 
     runs-on: ubuntu-latest
