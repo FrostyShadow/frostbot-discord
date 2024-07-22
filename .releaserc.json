@@ -1,0 +1,43 @@
+{
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "conventionalcommits",
+        "parserOpts": {
+          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
+        }
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "conventionalcommits",
+        "parserOpts": {
+          "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
+        },
+        "writerOpts": {
+          "commitsSort": ["subject", "scope"]
+        }
+      }
+    ],
+    [
+      "@semantic-release/exec",
+      {
+        "verifyReleaseCmd": "echo ${nextRelease.version} > semver.txt"
+      }
+    ]
+  ],
+  "branches": [
+    "main",
+    {
+      "name": "dev",
+      "prerelease": "dev"
+    },
+    {
+      "name": "feature/*",
+      "prerelease": "${name.split('/').slice(0, 2).join('-').toLowerCase()}"
+    }
+  ],
+  "tagFormat": "${version}"
+}
