@@ -38,5 +38,6 @@
       "name": "feature/*",
       "prerelease": "${name.split('/').slice(0, 2).join('-').toLowerCase()}"
     }
-  ]
+  ],
+  "tagFromat": "${version}"
 }
