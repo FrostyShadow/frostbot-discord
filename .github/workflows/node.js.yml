@@ -32,7 +32,7 @@ jobs:
     - name: Semantic Version
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: npx semantic-release --dry-run
+      run: npx semantic-release
   
   build:
 
