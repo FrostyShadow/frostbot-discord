@@ -15,8 +15,8 @@ datasource db {
 
 model User {
   id         Int       @id @default(autoincrement())
-  userId     Int
-  guildId    Int
+  userId     String
+  guildId    String
   joinDate   DateTime  @default(now())
   levelId    Int?      @unique
   birthdayId Int?      @unique
