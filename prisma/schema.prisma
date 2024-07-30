@@ -1,0 +1,59 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         Int       @id @default(autoincrement())
+  userId     Int
+  guildId    Int
+  joinDate   DateTime  @default(now())
+  levelId    Int?      @unique
+  birthdayId Int?      @unique
+  Warnings   Warning[]
+  TempBan    TempBan[]
+  Level      Level?    @relation()
+  Birthday   Birthday? @relation()
+}
+
+model Warning {
+  id     Int    @id @default(autoincrement())
+  reason String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
+}
+
+model TempBan {
+  id        Int      @id @default(autoincrement())
+  reason    String
+  expiresAt DateTime
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model Level {
+  id            Int       @id @default(autoincrement())
+  currentLevel  Int       @default(0)
+  nextLevelUpAt DateTime?
+  userId        Int       @unique
+  user          User      @relation(fields: [userId], references: [id])
+}
+
+model Birthday {
+  id     Int  @id @default(autoincrement())
+  day    Int
+  month  Int
+  year   Int?
+  userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
+}
