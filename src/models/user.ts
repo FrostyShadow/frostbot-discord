@@ -6,7 +6,6 @@ import { Prisma } from "@prisma/client";
 import { helpers } from "../helpers";
 
 export class User {
-    public id: number;
     public userId: string;
     public guildId: string;
     public joinDate: Date;

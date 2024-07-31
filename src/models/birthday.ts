@@ -1,7 +1,6 @@
 import { User } from "./user";
 
 export class Birthday {
-    public id: number;
     public day: number;
     public month: number;
     public year?: number;
