@@ -60,7 +60,7 @@ client.on("guildMemberAdd", (member) => {
   user.userId = member.id;
   user.guildId = member.guild.id;
   user.joinDate = member.joinedAt ?? new Date();
-  userQueries.addUser.main(user, databaseClient.client)
+  userQueries.addUser.execute(user, databaseClient.client)
     .then(async () => {
       await databaseClient.client.$disconnect();
     })

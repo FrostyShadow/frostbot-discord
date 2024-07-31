@@ -57,3 +57,12 @@ model Birthday {
   userId Int  @unique
   user   User @relation(fields: [userId], references: [id])
 }
+
+model ServerConfiguration {
+  id          Int    @id @default(autoincrement())
+  guildId     String
+  configKey   String
+  configValue String
+
+  @@unique([guildId, configKey])
+}
