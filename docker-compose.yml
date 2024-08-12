@@ -1,0 +1,9 @@
+services:
+  bot:
+    build:
+      context: .
+      target: deployment
+    ports:
+      - 80:80
+      - 443:443
+    
